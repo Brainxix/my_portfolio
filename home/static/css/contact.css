@@ -1,0 +1,104 @@
+/* ==========================================================
+   CONTACT SECTION
+========================================================== */
+
+.contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Section Headings inside contact */
+.contact h2 {
+    font-size: 2rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.contact p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+/* Contact Info / Details */
+.contact-info {
+    background: var(--white);
+    padding: 35px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.contact-info:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-item h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.contact-item p {
+    margin-bottom: 0;
+    color: var(--text);
+}
+
+.contact-item a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+/* Social Block */
+.contact-social {
+    background: var(--light);
+    padding: 35px;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.contact-social:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-social ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-social ul li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.contact-social ul li a:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateX(5px);
+}

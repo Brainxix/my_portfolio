@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/skills.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/projects.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/experience.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            My Portfolio
+        {% endblock %}
+    </title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+
+        <nav class="navbar">
+
+            <div class="container">
+
+                <!-- Logo -->
+                <a href="#hero" class="logo">
+                    <img src="{% static 'images/logo.jpeg' %}" alt="Brainxix Logo">
+                </a>
+
+                <!-- Navigation -->
+                <ul class="nav-links">
+
+                    <li><a href="#hero">Home</a></li>
+
+                    <li><a href="#about">About</a></li>
+
+                    <li><a href="#skills">Skills</a></li>
+
+                    <li><a href="#projects">Projects</a></li>
+
+                    <li><a href="#experience">Experience</a></li>
+
+                    <li><a href="#contact">Contact</a></li>
+
+                </ul>
+
+                <!-- Right Side -->
+                <div class="nav-actions">
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <!-- Mobile Menu -->
+                    <button class="menu-btn" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                </div>
+
+        </div>
+
+    </nav>
+
+</header>
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <h3>Brainxix</h3>
+
+                <p>
+                    Backend Developer • Electronic Engineer • Problem Solver
+                </p>
+
+                <div class="social-links">
+
+                    <a href="https://github.com/Brainxix"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fa-brands fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+
+                    <a href="mailto:ezegbuhanson@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                        Email
+                    </a>
+
+                </div>
+
+                <p class="copyright">
+                    © 2026 Brainxix. All Rights Reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>

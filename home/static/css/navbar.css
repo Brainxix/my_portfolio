@@ -1,0 +1,253 @@
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    background: var(--navbar-bg);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid var(--border);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.navbar{
+
+    width:100%;
+
+}
+
+.navbar .container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    min-height:var(--header-height);
+
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.logo img{
+
+    width:80px;
+
+    height:auto;
+
+    transition:var(--transition);
+
+}
+
+.logo:hover img{
+
+    transform:scale(1.05);
+
+}
+
+
+/* ==========================================================
+   NAVIGATION LINKS
+========================================================== */
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:2.5rem;
+
+}
+
+.nav-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+}
+
+/* ==================
+   THEME TOGGLE
+================== */
+
+#theme-toggle{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:var(--secondary);
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+#theme-toggle:hover{
+
+    color:var(--white);
+
+    transform:rotate(180deg);
+
+}
+
+#theme-toggle i{
+
+    font-size:1.2rem;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    color:var(--nav-link-color);
+
+    font-size:1rem;
+
+    font-weight:500;
+
+    transition:var(--transition);
+
+}
+
+.nav-links a:hover{
+
+    color:var(--nav-link-hover);
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================================================
+   LINK UNDERLINE
+========================================================== */
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:100%;
+
+    height:3px;
+
+    background:var(--nav-link-);
+
+    border-radius:999px;
+
+    transform:scaleX(0);
+
+    transform-origin:left;
+
+    transition:var(--transition);
+
+}
+
+.nav-links a:hover::after{
+
+    transform:scaleX(1);
+
+}
+
+
+/* ==========================================================
+   MOBILE MENU BUTTON
+========================================================== */
+
+.menu-btn{
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:48px;
+
+    height:48px;
+
+    background:none;
+
+    border:none;
+
+    color:var(--secondary);
+
+    font-size:1.6rem;
+
+    transition:var(--transition);
+
+}
+
+.menu-btn:hover{
+
+    color:var(--white);
+
+    transform:scale(1.05);
+
+}
+
+body.dark-mode{
+
+    --white: #0F172A;
+    --light: #1E293B;
+
+    --dark: #F9FAFB;
+
+    --text: #E5E7EB;
+    --text-light: #CBD5E1;
+
+    --border: #334155;
+
+    --navbar-bg: rgba(15,23,42,.95);
+
+}

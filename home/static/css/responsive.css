@@ -1,0 +1,198 @@
+/* ==========================================================
+   RESPONSIVE.CSS
+========================================================== */
+
+
+/* ==========================================================
+   TABLETS & SMALL LAPTOPS
+========================================================== */
+
+@media (max-width: 992px){
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .menu-btn{
+
+        display:flex;
+
+    }
+
+    .navbar{
+
+        position:relative;
+
+    }
+
+    .nav-links{
+
+        position:absolute;
+
+        top:100%;
+
+        left:0;
+
+        width:100%;
+
+        background:#0F172A;
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:0;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        transition:max-height .4s ease;
+
+        /* border-top:1px solid rgba(255,255,255,.08); */
+
+    }
+
+    .nav-links.active{
+
+        max-height:500px;
+
+    }
+
+    .nav-links li{
+
+        width:100%;
+
+    }
+
+    .nav-links a{
+
+        display:block;
+
+        width:100%;
+
+        padding:18px;
+
+        text-align:center;
+
+        color:var(--secondary);
+
+    }
+
+    .logo img{
+
+        width:70px;
+
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero .container{
+
+        flex-direction:column-reverse;
+
+        text-align:center;
+
+        gap:4rem;
+
+    }
+
+    .hero-description{
+
+        margin-inline:auto;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+    }
+
+    .tech-stack{
+
+        justify-content:center;
+
+    }
+
+    .hero-socials{
+
+        justify-content:center;
+
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE PHONES
+========================================================== */
+
+@media (max-width:576px){
+
+    html{
+
+        font-size:15px;
+
+    }
+
+    .hero{
+
+        padding:4rem 0;
+
+    }
+
+    .hero-image img{
+
+        width:300px;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        width:100%;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .projects-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .skills-content{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stats{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .contact{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

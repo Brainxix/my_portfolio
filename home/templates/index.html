@@ -1,0 +1,73 @@
+
+ {% extends "base.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+   
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+<section id="hero" class="hero">
+
+    <div class="container">
+        <div class="hero-text">
+            <div class="hero-badge">
+                <span class="badge-icon">🎓</span>
+                <span>Graduate Electronic Engineer • Backend Developer</span>
+            </div>
+            <p class="greeting">Hello, I'm</p>
+            <h1>Chibuoke Hanson Ezegbu</h1>
+            <h2>Backend Developer • Python • Django</h2>
+               <p class="hero-description">
+                I build secure, scalable, and user-focused web applications using
+                Python, Django, HTML, CSS, and JavaScript. I'm passionate about
+                creating solutions that combine clean design with reliable backend
+                functionality.
+            </p>
+        
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">
+                     <i class="fa-solid fa-code"></i>
+                     View Projects</a>
+                <a href="{% static 'files/Hanson_CV.pdf' %}"
+                class="btn-secondary"
+                download>
+                <i class="fa-solid fa-download"></i>
+                Download CV</a>
+            </div>
+            <div class="tech-stack">
+                <span>Python</span>
+                <span>Django</span>
+                <span>PostgreSQL</span>
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+            </div>
+            <div class="hero-socials">
+                <a href="https://github.com/Brainxix" target="_blank" rel="nooperner noreferrer">
+                <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237" target="_blank" rel="nooperner noreferrer">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="mailto:ezegbuhanson@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Replace this later with your professional picture -->
+            <img src="{% static 'images/logo.jpeg' %}" alt="Chibuoke Hanson Ezegbu" loading="lazy">
+        </div>
+    </div>
+
+</section>
+{% include "sections/about.html" %}
+{% include "sections/skills.html" %}
+{% include "sections/projects.html" %}
+{% include "sections/experience.html" %}
+{% include "sections/contact.html" %}
+
+
+{% endblock %}
