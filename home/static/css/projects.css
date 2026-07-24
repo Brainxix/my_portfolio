@@ -36,7 +36,7 @@
 }
 
 /* Projects Grid */
-.projects-grid {
+.projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
@@ -96,7 +96,7 @@
 }
 
 /* Project Tags */
-.project-tags {
+.project-tech {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;

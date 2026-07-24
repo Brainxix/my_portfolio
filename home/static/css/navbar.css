@@ -53,9 +53,17 @@
 
     align-items:center;
 
+    color:var(--primary);
+
+    font-weight:700;
+
+    font-size:1.5rem;
+
 }
 
 .logo img{
+
+    display: block;
 
     width:80px;
 
