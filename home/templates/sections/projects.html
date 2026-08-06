@@ -1,163 +1,136 @@
-
 {% load static %}
 
-<!-- ===================== Projects ===================== -->
-<section id="projects" class="projects section">
+<!-- ================= PROJECTS SECTION ================= -->
+<section id="projects" class="projects section reveal">
+    <div class="container">
 
-    <!-- Section Heading -->
-    <div class="section-title">
-        <h2>My Projects</h2>
-        <p>
-            Explore some of the projects I've developed, demonstrating my
-            expertise in backend development, web applications, embedded
-            systems, and IoT solutions.
-        </p>
+        <!-- Section Header -->
+        <div class="section-header reveal">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">
+                Explore backend systems, web applications, embedded solutions, 
+                and IoT hardware integrations I've engineered.
+            </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="project-filters reveal">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web Apps</button>
+            <button class="filter-btn" data-filter="django">Django</button>
+            <button class="filter-btn" data-filter="iot">IoT / Hardware</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+            <!-- Project 1: IoT -->
+            <article class="project-card reveal" data-category="iot">
+                <div class="project-image">
+                    <img src="{% static 'images/smart_extension_box.jpg' %}" alt="Smart Extension Box" loading="lazy">
+                    <div class="project-overlay">
+                        <a href="#" class="icon-link" aria-label="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" class="icon-link" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <h3>Smart Extension Box</h3>
+                    <p>
+                        An IoT-powered smart extension box developed using ESP32, PZEM-004T, 
+                        and Blynk to monitor electrical parameters in real time while allowing remote 
+                        control of connected appliances.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>ESP32</span>
+                        <span>Blynk</span>
+                        <span>PZEM-004T</span>
+                        <span>IoT</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn-project demo-link">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                        </a>
+                        <a href="#" class="btn-project code-link">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 2: Django & Web -->
+            <article class="project-card reveal" data-category="web django">
+                <div class="project-image">
+                    <img src="{% static 'images/todo_app.jpg' %}" alt="Task Management Application" loading="lazy">
+                    <div class="project-overlay">
+                        <a href="#" class="icon-link" aria-label="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" class="icon-link" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <h3>Task Management App</h3>
+                    <p>
+                        A full-featured Django task management application with secure authentication, 
+                        user profiles, task categorization, reminders, and progress tracking to improve productivity.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>Django</span>
+                        <span>Python</span>
+                        <span>SQLite</span>
+                        <span>Bootstrap</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn-project demo-link">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                        </a>
+                        <a href="#" class="btn-project code-link">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3: Django & Web -->
+            <article class="project-card reveal" data-category="web django">
+                <div class="project-image">
+                    <img src="{% static 'images/library_system.jpg' %}" alt="Library Management System" loading="lazy">
+                    <div class="project-overlay">
+                        <a href="#" class="icon-link" aria-label="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" class="icon-link" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <h3>Library Management System</h3>
+                    <p>
+                        A Django and PostgreSQL-powered library management system that simplifies 
+                        book cataloging, member registration, borrowing, returns, and administrative operations.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>Django</span>
+                        <span>PostgreSQL</span>
+                        <span>Python</span>
+                        <span>Bootstrap</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn-project demo-link">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                        </a>
+                        <a href="#" class="btn-project code-link">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
     </div>
-
-    <!-- Project Filters -->
-    <div class="project-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="web">Web Apps</button>
-        <button class="filter-btn" data-filter="django">Django</button>
-        <button class="filter-btn" data-filter="iot">IoT</button>
-    </div>
-
-    <!-- Projects Grid -->
-    <div class="projects-grid">
-
-        <!-- ================= Project 1 ================= -->
-        <article class="project-card iot">
-
-            <div class="project-image">
-                <img
-                    src="{% static 'images/smart_extension_box.jpg' %}"
-                    alt="Smart Extension Box"
-                    loading="lazy">
-            </div>
-
-            <div class="project-content">
-
-                <h3>Smart Extension Box</h3>
-
-                <p>
-                    An IoT-powered smart extension box developed using
-                    ESP32, PZEM-004T, and Blynk to monitor electrical
-                    parameters in real time while allowing remote
-                    control of connected appliances.
-                </p>
-
-                <div class="project-tags">
-                    <span>ESP32</span>
-                    <span>Blynk</span>
-                    <span>PZEM-004T</span>
-                    <span>IoT</span>
-                </div>
-
-                <div class="project-links">
-                    <a href="#" class="demo-link">
-                        <i class="fas fa-arrow-up-right-from-square"></i>
-                        Live Demo
-                    </a>
-
-                    <a href="#" class="code-link">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
-                </div>
-
-            </div>
-
-        </article>
-
-        <!-- ================= Project 2 ================= -->
-        <article class="project-card web django">
-
-            <div class="project-image">
-                <img
-                    src="{% static 'images/todo_app.jpg' %}"
-                    alt="Task Management Application"
-                    loading="lazy">
-            </div>
-
-            <div class="project-content">
-
-                <h3>Task Management App</h3>
-
-                <p>
-                    A full-featured Django task management application
-                    with secure authentication, user profiles,
-                    task categorization, reminders, and progress
-                    tracking to improve productivity.
-                </p>
-
-                <div class="project-tags">
-                    <span>Django</span>
-                    <span>Python</span>
-                    <span>SQLite</span>
-                    <span>Bootstrap</span>
-                </div>
-
-                <div class="project-links">
-                    <a href="#" class="demo-link">
-                        <i class="fas fa-arrow-up-right-from-square"></i>
-                        Live Demo
-                    </a>
-
-                    <a href="#" class="code-link">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
-                </div>
-
-            </div>
-
-        </article>
-
-        <!-- ================= Project 3 ================= -->
-        <article class="project-card web django">
-
-            <div class="project-image">
-                <img
-                    src="{% static 'images/library_system.jpg' %}"
-                    alt="Library Management System"
-                    loading="lazy">
-            </div>
-
-            <div class="project-content">
-
-                <h3>Library Management System</h3>
-
-                <p>
-                    A Django and PostgreSQL-powered library management
-                    system that simplifies book cataloging, member
-                    registration, borrowing, returns, and administrative
-                    operations through a user-friendly interface.
-                </p>
-
-                <div class="project-tags">
-                    <span>Django</span>
-                    <span>PostgreSQL</span>
-                    <span>Python</span>
-                    <span>HTML/CSS</span>
-                </div>
-
-                <div class="project-links">
-                    <a href="#" class="demo-link">
-                        <i class="fas fa-arrow-up-right-from-square"></i>
-                        Live Demo
-                    </a>
-
-                    <a href="#" class="code-link">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
-                </div>
-
-            </div>
-
-        </article>
-
-    </div>
-
 </section>
-```

@@ -2,260 +2,206 @@
    HEADER
 ========================================================== */
 
-.header{
-
-    position:sticky;
-
-    top:0;
-
-    z-index:1000;
-
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background: var(--navbar-bg);
-
-    backdrop-filter:blur(12px);
-
-    border-bottom:1px solid var(--border);
-
-    box-shadow:var(--shadow-sm);
-
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
-
 
 /* ==========================================================
-   NAVBAR
+   NAVBAR & CONTAINER
 ========================================================== */
 
-.navbar{
-
-    width:100%;
-
+.navbar {
+    width: 100%;
 }
 
-.navbar .container{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    min-height:var(--header-height);
-
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: var(--header-height, 70px);
 }
 
 /* ==========================================================
    LOGO
 ========================================================== */
 
-.logo{
-
-    display:flex;
-
-    align-items:center;
-
-    color:var(--primary);
-
-    font-weight:700;
-
-    font-size:1.5rem;
-
+.logo {
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-decoration: none;
 }
 
-.logo img{
-
+.logo img {
     display: block;
-
-    width:80px;
-
-    height:auto;
-
-    transition:var(--transition);
-
+    width: 80px;
+    height: auto;
+    transition: var(--transition);
 }
 
-.logo:hover img{
-
-    transform:scale(1.05);
-
+.logo:hover img {
+    transform: scale(1.05);
 }
-
 
 /* ==========================================================
-   NAVIGATION LINKS
+   NAVIGATION LINKS & ACTIONS
 ========================================================== */
 
-.nav-links{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:2.5rem;
-
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-.nav-actions{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:1rem;
-
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
 }
 
-/* ==================
+.nav-links a {
+    position: relative;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-cyan);
+    transform: translateY(-2px);
+}
+
+/* Link Underline Effect */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 3px;
+    background: var(--accent-cyan);
+    border-radius: 999px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+}
+
+/* ==========================================================
    THEME TOGGLE
-================== */
-
-#theme-toggle{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    width:46px;
-
-    height:46px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:transparent;
-
-    color:var(--secondary);
-
-    cursor:pointer;
-
-    transition:var(--transition);
-
-}
-
-#theme-toggle:hover{
-
-    color:var(--white);
-
-    transform:rotate(180deg);
-
-}
-
-#theme-toggle i{
-
-    font-size:1.2rem;
-
-}
-
-.nav-links a{
-
-    position:relative;
-
-    color:var(--nav-link-color);
-
-    font-size:1rem;
-
-    font-weight:500;
-
-    transition:var(--transition);
-
-}
-
-.nav-links a:hover{
-
-    color:var(--nav-link-hover);
-
-    transform:translateY(-2px);
-
-}
-
-
-/* ==========================================================
-   LINK UNDERLINE
 ========================================================== */
 
-.nav-links a::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    bottom:-8px;
-
-    width:100%;
-
-    height:3px;
-
-    background:var(--nav-link-);
-
-    border-radius:999px;
-
-    transform:scaleX(0);
-
-    transform-origin:left;
-
-    transition:var(--transition);
-
+#theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-.nav-links a:hover::after{
-
-    transform:scaleX(1);
-
+#theme-toggle:hover {
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    transform: rotate(15deg) scale(1.05);
 }
 
+#theme-toggle i {
+    font-size: 1.15rem;
+}
 
 /* ==========================================================
-   MOBILE MENU BUTTON
+   MOBILE MENU BUTTON & RESPONSIVE DRAWER
 ========================================================== */
 
-.menu-btn{
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    width:48px;
-
-    height:48px;
-
-    background:none;
-
-    border:none;
-
-    color:var(--secondary);
-
-    font-size:1.6rem;
-
-    transition:var(--transition);
-
+.menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 8px);
+    color: var(--text-light);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-.menu-btn:hover{
-
-    color:var(--white);
-
-    transform:scale(1.05);
-
+.menu-btn:hover {
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    transform: scale(1.05);
 }
 
-body.dark-mode{
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: flex;
+    }
 
+    .nav-links {
+        position: fixed;
+        top: var(--header-height, 70px);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border);
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-150%);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+}
+
+/* ==========================================================
+   DARK MODE OVERRIDES
+========================================================== */
+
+body.dark-mode {
     --white: #0F172A;
     --light: #1E293B;
-
     --dark: #F9FAFB;
-
     --text: #E5E7EB;
     --text-light: #CBD5E1;
-
     --border: #334155;
-
-    --navbar-bg: rgba(15,23,42,.95);
-
+    --navbar-bg: rgba(15, 23, 42, 0.95);
 }

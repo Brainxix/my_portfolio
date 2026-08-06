@@ -7,179 +7,108 @@
     <!-- ================= META ================= -->
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="Brainxix Portfolio - Backend Developer, Django Developer, Electronic Engineer and Problem Solver.">
-
-    <meta name="keywords"
-          content="Brainxix, Portfolio, Python, Django, Backend Developer, Electronic Engineer">
-
-    <meta name="author"
-          content="Brainxix">
-
-    <meta name="theme-color"
-          content="#2563EB">
+    <meta name="description"content="Brainxix Portfolio - Backend Developer, Django Developer, Electronic Engineer and Problem Solver.">
+    <meta name="keywords"content="Brainxix, Portfolio, Python, Django, Backend Developer, Electronic Engineer">
+    <meta name="author"content="Brainxix">
+    <meta name="theme-color" content="#2563EB">
 
     <!-- ================= OPEN GRAPH ================= -->
 
-    <meta property="og:title"
-          content="Brainxix Portfolio">
-
-    <meta property="og:description"
-          content="Backend Developer specializing in Python and Django.">
-
-    <meta property="og:type"
-          content="website">
+    <meta property="og:title"content="Brainxix Portfolio">
+    <meta property="og:description"content="Backend Developer specializing in Python and Django.">
+    <meta property="og:type"content="website">
 
     <!-- ================= TITLE ================= -->
 
-    <title>
-
-        {% block title %}
-            Brainxix Portfolio
-        {% endblock %}
-
-    </title>
+    <title> {% block title %} Brainxix Portfolio {% endblock %} </title>
 
     <!-- ================= FAVICON ================= -->
+<!-- ================= FAVICON ================= -->
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <link rel="shortcut icon" href="{% static 'images/favicon.jpg' %}" type="image/jpeg">
 
-    <link rel="icon"
-          href="{% static 'images/favicon.ico' %}"
-          type="image/x-icon">
+    <!-- ================= FONTS & Icon ================= -->
 
-    <!-- ================= FONTS ================= -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <!-- ================= ICONS ================= -->
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect"href="https://fonts.googleapis.com">
+    <link rel="preconnect"href="https://fonts.gstatic.com"crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"rel="stylesheet">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- ================= CSS ================= -->
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/hero.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/skills.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/projects.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/experience.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/contact.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
+    <!-- deffered js load -->
+    <script src="{% static 'js/script.js' %}" defer></script>
 </head>
-
-<body>
+<body class="dark-mode">
 
     <!-- ================= SKIP LINK ================= -->
 
-    <a href="#main-content" class="skip-link">
-
-        Skip to content
-
-    </a>
+    <a href="#main-content" class="skip-link"> Skip to content </a>
 
     <!-- ================= PRELOADER ================= -->
 
-    <div class="preloader">
-
+    <div class="preloader" id="preloader">
         <span class="loader"></span>
-
     </div>
 
     <!-- ================= SCROLL PROGRESS ================= -->
 
-    <div class="progress-bar"></div>
+    <div class="progress-bar" id="progressBar"></div>
 
     <!-- ================= CURSOR EFFECT ================= -->
 
-    <div class="cursor-glow"></div>
-
-    <div class="cursor-dot"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
 
     <!-- ================= HEADER ================= -->
 
-    <header class="header">
-
+    <header class="header" id="header">
         <nav class="navbar" aria-label="Primary Navigation">
-
             <div class="container">
 
                 <!-- Logo -->
 
-                <a href="{% url 'home' %}"
-                   class="logo"
-                   aria-label="Brainxix Home">
-
-                    <img src="{% static 'images/log.png' %}"
-                         alt="Brainxix Logo">
-
+                <a href="{% url 'home' %}"class="logo" aria-label="Brainxix Home">
+                    <img src="{% static 'images/log.png' %}"alt="Brainxix Logo">
                 </a>
 
                 <!-- Navigation -->
 
-                <ul class="nav-links">
-
+                <ul class="nav-links" id="navLinks">
                     <li><a class="nav-link" href="#hero">Home</a></li>
-
                     <li><a class="nav-link" href="#about">About</a></li>
-
                     <li><a class="nav-link" href="#skills">Skills</a></li>
-
                     <li><a class="nav-link" href="#projects">Projects</a></li>
-
                     <li><a class="nav-link" href="#experience">Experience</a></li>
-
                     <li><a class="nav-link" href="#contact">Contact</a></li>
-
                 </ul>
 
                 <!-- Navigation Actions -->
 
                 <div class="nav-actions">
 
-                    <button class="menu-btn"
-                            aria-label="Toggle navigation">
-
+                    <button class="menu-btn" aria-label="Toggle navigation">
                         <i class="fa-solid fa-bars"></i>
-
                     </button>
 
-                    <button id="theme-toggle"
-                            aria-label="Toggle theme"
-                            aria-pressed="false">
-
-                        <i class="fa-solid fa-moon"></i>
-
+                    <button id="theme-toggle"aria-label="Toggle theme"aria-pressed="true">
+                        <i class="fa-solid fa-sun"></i>
                     </button>
-
                 </div>
-
             </div>
-
         </nav>
-
     </header>
 
     <!-- ================= MAIN ================= -->
@@ -302,7 +231,6 @@
 
     <!-- ================= JAVASCRIPT ================= -->
 
-    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 

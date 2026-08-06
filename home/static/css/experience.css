@@ -14,114 +14,129 @@
     margin: 60px auto 0;
 }
 
-.experience-container::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:95px;
-
-    top:0;
-
-    bottom:0;
-
-    width:3px;
-
-    background:var(--border);
-
+/* Vertical Timeline Line */
+.experience-container::before {
+    content: "";
+    position: absolute;
+    left: 110px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--border);
+    z-index: 1;
 }
 
-
-/* Experience Card */
+/* Experience Card Layout */
 .experience-card {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
     background: var(--white);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    margin-bottom: 30px;
-    display: flex;
     border-left: 4px solid var(--secondary);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     overflow: hidden;
-    grid-template-columns:120px 1fr;
-    gap:30px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.experience-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .experience-card:hover {
     box-shadow: var(--shadow-md);
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     border-left-color: var(--primary-dark);
 }
 
+/* Timeline Date & Dot */
 .experience-date {
-    background: none;
-    padding-top: 8px;
-    flex-shrink: 0;
-    text-align: center;
-    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 25px;
     position: relative;
-    
-}
-
-.experience-date::after{
-
-    content:"";
-
-    position:absolute;
-
-    right:-18px;
-
-    top:10px;
-
-    width:16px;
-
-    height:16px;
-
-    border-radius:50%;
-
-    background:var(--secondary);
-
-    border:4px solid var(--white);
-
 }
 
 .experience-date span {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary);
     font-size: 1rem;
+    z-index: 2;
 }
 
+/* Timeline Dot overlaying the vertical line */
+.experience-date::after {
+    content: "";
+    position: absolute;
+    right: -24px;
+    top: 28px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--secondary);
+    border: 3px solid var(--white);
+    z-index: 2;
+}
+
+.experience-card:hover .experience-date::after {
+    background: var(--primary-dark);
+}
+
+/* Card Content */
 .experience-content {
-    padding: 25px;
-    flex-grow: 1;
+    padding: 25px 25px 25px 10px;
 }
 
 .experience-content h3 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     color: var(--dark);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .experience-content h4 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--secondary);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     font-weight: 600;
 }
 
 .experience-content p {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: var(--text);
     margin-bottom: 0;
 }
 
-.experience-content:hover{
+/* Responsive Mobile Layout */
+@media (max-width: 640px) {
+    .experience-container::before {
+        left: 20px;
+    }
 
-    transform:translateY(-6px);
+    .experience-card {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding-left: 30px;
+    }
 
-    box-shadow:var(--shadow-lg);
+    .experience-date {
+        justify-content: flex-start;
+        padding: 20px 20px 0 0;
+    }
 
-    border-color:var(--primary);
+    .experience-date::after {
+        left: -38px;
+        right: auto;
+        top: 24px;
+    }
 
-}   
+    .experience-content {
+        padding: 10px 20px 20px 0;
+    }
+}

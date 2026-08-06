@@ -1,267 +1,324 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ==========================================
-       MOBILE NAVIGATION
+       1. PRELOADER DISMISSAL
     ========================================== */
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+        preloader.classList.add("hidden");
+        setTimeout(() => preloader.classList.add("hidden"), 400);
+    }
 
-    const menuBtn = document.querySelector(".menu-btn");
-    const navLinks = document.querySelector(".nav-links");
+    /* ==========================================
+       2. FOOTER DYNAMIC YEAR
+    ========================================== */
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+    /* ==========================================
+       3. MOBILE NAVIGATION TOGGLE
+    ========================================== */
+    const menuBtn = document.getElementById("menuBtn") || document.querySelector(".menu-btn");
+    const navLinks = document.getElementById("navLinks") || document.querySelector(".nav-links");
     const menuIcon = menuBtn?.querySelector("i");
 
     if (menuBtn && navLinks) {
-
         menuBtn.addEventListener("click", () => {
-
             navLinks.classList.toggle("active");
-
-            menuIcon.classList.toggle("fa-bars");
-            menuIcon.classList.toggle("fa-xmark");
-
+            menuBtn.setAttribute("aria-expanded", navLinks.classList.contains("active"));
+            
+            if (menuIcon) {
+                menuIcon.classList.toggle("fa-bars");
+                menuIcon.classList.toggle("fa-xmark");
+            }
         });
 
+        // Close menu on link click
         navLinks.querySelectorAll("a").forEach(link => {
-
             link.addEventListener("click", () => {
-
                 navLinks.classList.remove("active");
-
-                menuIcon.classList.remove("fa-xmark");
-                menuIcon.classList.add("fa-bars");
-
+                if (menuIcon) {
+                    menuIcon.classList.remove("fa-xmark");
+                    menuIcon.classList.add("fa-bars");
+                }
             });
-
         });
-
     }
 
     /* ==========================================
-       THEME TOGGLE
+       4. THEME TOGGLE (LIGHT / DARK)
     ========================================== */
-
     const themeBtn = document.getElementById("theme-toggle");
     const themeIcon = themeBtn?.querySelector("i");
+    const body = document.body;
 
     const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme === "dark") {
-
-        document.body.classList.add("dark-mode");
-
+    if (savedTheme === "light") {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+        themeIcon?.classList.replace("fa-sun", "fa-moon");
+    } else {
+        body.classList.add("dark-mode");
         themeIcon?.classList.replace("fa-moon", "fa-sun");
-
     }
 
     if (themeBtn) {
-
         themeBtn.addEventListener("click", () => {
+            const isDark = body.classList.contains("dark-mode");
 
-            document.body.classList.toggle("dark-mode");
-
-            const darkMode =
-                document.body.classList.contains("dark-mode");
-
-            localStorage.setItem(
-                "theme",
-                darkMode ? "dark" : "light"
-            );
-
-            themeIcon?.classList.toggle("fa-moon");
-            themeIcon?.classList.toggle("fa-sun");
-
+            if (isDark) {
+                body.classList.remove("dark-mode");
+                body.classList.add("light-mode");
+                themeIcon?.classList.replace("fa-sun", "fa-moon");
+                localStorage.setItem("theme", "light");
+            } else {
+                body.classList.remove("light-mode");
+                body.classList.add("dark-mode");
+                themeIcon?.classList.replace("fa-moon", "fa-sun");
+                localStorage.setItem("theme", "dark");
+            }
         });
-
     }
 
     /* ==========================================
-       STICKY NAVBAR
+       5. HEADER ELEVATION & SCROLL PROGRESS
     ========================================== */
-
-    const navbar = document.querySelector(".navbar");
+    const header = document.querySelector(".header");
+    const progressBar = document.getElementById("progressBar");
+    const backToTopBtn = document.getElementById("backToTop");
 
     window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
 
-        if (!navbar) return;
+        // Navbar elevation styling
+        if (header) {
+            header.classList.toggle("scrolled", scrollY > 30);
+        }
 
-        navbar.classList.toggle(
-            "scrolled",
-            window.scrollY > 40
-        );
+        // Scroll Progress Bar
+        if (progressBar) {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
+            progressBar.style.width = `${progress}%`;
+        }
 
+        // Back To Top Visibility
+        if (backToTopBtn) {
+            backToTopBtn.classList.toggle("active", scrollY > 400);
+        }
     });
 
-    /* ==========================================
-       ACTIVE NAVIGATION
-    ========================================== */
-
-    const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll(".nav-links a");
-
-    function updateActiveLink() {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const top = section.offsetTop - 120;
-
-            if (window.scrollY >= top) {
-
-                current = section.getAttribute("id");
-
-            }
-
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
-
-        navItems.forEach(link => {
-
-            link.classList.remove("active");
-
-            if (link.getAttribute("href") === `#${current}`) {
-
-                link.classList.add("active");
-
-            }
-
-        });
-
     }
 
-    window.addEventListener("scroll", updateActiveLink);
+    /* ==========================================
+       6. ACTIVE NAV HIGHLIGHT ON SCROLL
+    ========================================== */
+    const sections = document.querySelectorAll("section[id]");
+    const navItems = document.querySelectorAll(".nav-links a");
 
-    updateActiveLink();
+    function highlightActiveSection() {
+        const scrollY = window.scrollY;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 140;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute("id");
+
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                navItems.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${sectionId}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener("scroll", highlightActiveSection);
 
     /* ==========================================
-       REVEAL ANIMATION
+       7. REVEAL ANIMATIONS (INTERSECTION OBSERVER)
     ========================================== */
-
     const revealItems = document.querySelectorAll(".reveal");
 
-    const observer = new IntersectionObserver(entries => {
-
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-
             if (entry.isIntersecting) {
-
                 entry.target.classList.add("active");
-
             }
-
         });
+    }, { threshold: 0.12 });
 
-    }, {
-
-        threshold: 0.15
-
-    });
-
-    revealItems.forEach(item => {
-
-        observer.observe(item);
-
-    });
+    revealItems.forEach(item => revealObserver.observe(item));
 
     /* ==========================================
-       STAGGER ABOUT CARDS
+       8. NUMERIC COUNTER ANIMATION
     ========================================== */
+    const counters = document.querySelectorAll(".counter");
 
-    document
-        .querySelectorAll(".about-card")
-        .forEach((card, index) => {
-
-            card.style.transitionDelay =
-                `${index * 120}ms`;
-
-        });
-
-    /* ==========================================
-       STATS COUNTER
-    ========================================== */
-
-    const counters = document.querySelectorAll(".stat-card h3");
-
-    const counterObserver = new IntersectionObserver(entries => {
-
+    const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-
             if (!entry.isIntersecting) return;
 
             const counter = entry.target;
+            const targetNum = parseInt(counter.dataset.target || counter.textContent, 10);
 
-            const text = counter.textContent.trim();
+            if (isNaN(targetNum)) return;
 
-            const number = parseInt(text);
-
-            if (isNaN(number)) return;
-
-            let current = 0;
-
-            const increment = Math.max(1, Math.ceil(number / 60));
+            let currentNum = 0;
+            const step = Math.max(1, Math.ceil(targetNum / 50));
 
             const timer = setInterval(() => {
-
-                current += increment;
-
-                if (current >= number) {
-
-                    current = number;
-
+                currentNum += step;
+                if (currentNum >= targetNum) {
+                    counter.textContent = targetNum + "+";
                     clearInterval(timer);
-
+                } else {
+                    counter.textContent = currentNum;
                 }
-
-                counter.textContent = text.replace(number, current);
-
-            }, 20);
+            }, 30);
 
             counterObserver.unobserve(counter);
-
         });
+    }, { threshold: 0.5 });
 
-    });
-
-    counters.forEach(counter => {
-
-        counterObserver.observe(counter);
-
-    });
+    counters.forEach(counter => counterObserver.observe(counter));
 
     /* ==========================================
-       CARD HOVER GLOW
+       9. CARD SPOTLIGHT & TILT EFFECT
     ========================================== */
+    const interactiveCards = document.querySelectorAll(".about-card, .stat-card, .project-card, .skill-card");
 
-    const cards = document.querySelectorAll(
-
-        ".about-card, .skill-card, .project-card"
-
-    );
-
-    cards.forEach(card => {
-
-        card.addEventListener("mousemove", e => {
-
+    interactiveCards.forEach(card => {
+        card.addEventListener("mousemove", (e) => {
             const rect = card.getBoundingClientRect();
-
             const x = e.clientX - rect.left;
-
             const y = e.clientY - rect.top;
 
+            // Set coordinates for CSS background glow
             card.style.setProperty("--x", `${x}px`);
             card.style.setProperty("--y", `${y}px`);
 
+            // Subtle 3D Tilt calculation
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
         });
 
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+        });
     });
 
-    /* ==========================================
-       FOOTER YEAR
-    ========================================== */
+});
 
-    const year = document.getElementById("year");
+/* Include .skill-category in card spotlight effects */
+const interactiveCards = document.querySelectorAll(
+    ".about-card, .stat-card, .project-card, .skill-card, .skill-category"
+);
 
-    if (year) {
+interactiveCards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-        year.textContent = new Date().getFullYear();
+        card.style.setProperty("--x", `${x}px`);
+        card.style.setProperty("--y", `${y}px`);
+    });
+});
 
+/* ==========================================
+   10. PROJECT FILTERING LOGIC
+========================================== */
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
+
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        // Update Active Button Class
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filterValue = btn.getAttribute("data-filter");
+
+        projectCards.forEach(card => {
+            const categories = card.getAttribute("data-category") || "";
+
+            if (filterValue === "all" || categories.includes(filterValue)) {
+                card.classList.remove("is-hidden");
+            } else {
+                card.classList.add("is-hidden");
+            }
+        });
+    });
+});
+
+/* ==========================================
+   SCROLL REVEAL INTERSECTION OBSERVER
+========================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target); // Animates once per scroll
+            }
+        });
+    }, {
+        threshold: 0.12, // Triggers when 12% of the element is visible
+        rootMargin: "0px 0px -40px 0px"
+    });
+
+    // Attach observer to all elements carrying the .reveal class
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+});
+
+document.querySelectorAll('.experience-content').forEach((content) => {
+    const p = content.querySelector('p');
+    if (p.textContent.length > 150) {
+        const fullText = p.textContent;
+        const shortText = fullText.substring(0, 150) + '...';
+        
+        p.textContent = shortText;
+
+        const btn = document.createElement('button');
+        btn.textContent = 'Read More';
+        btn.className = 'read-more-btn';
+        content.appendChild(btn);
+
+        btn.addEventListener('click', () => {
+            const isExpanded = btn.textContent === 'Read Less';
+            p.textContent = isExpanded ? shortText : fullText;
+            btn.textContent = isExpanded ? 'Read More' : 'Read Less';
+        });
     }
+});
 
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".experience-card");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // Animates once
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    cards.forEach((card) => observer.observe(card));
 });

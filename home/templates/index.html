@@ -1,73 +1,79 @@
-
- {% extends "base.html" %}
+{% extends "base.html" %}
 {% load static %}
-{% block title %}
-Home
-{% endblock %}
-   
-{% block content %}
 
+{% block title %}Home | Brainxix Portfolio{% endblock %}
+
+{% block content %}
 <!-- ================= HERO SECTION ================= -->
 <section id="hero" class="hero">
-
     <div class="container">
         <div class="hero-text">
-            <div class="hero-badge">
-                <span class="badge-icon">🎓</span>
+            <!-- Status Badge -->
+            <div class="hero-badge animate-fade-in">
+                <span class="badge-icon"><i class="fa-solid fa-graduation-cap"></i></span>
                 <span>Graduate Electronic Engineer • Backend Developer</span>
             </div>
+
             <p class="greeting">Hello, I'm</p>
-            <h1>Chibuoke Hanson Ezegbu</h1>
-            <h2>Backend Developer • Python • Django</h2>
-               <p class="hero-description">
+            <h1 class="hero-name">Chbuoke Hanson Ezegbu</h1>
+            <h2 class="hero-role">Backend Developer • Python & Django Specialist</h2>
+            
+            <p class="hero-description">
                 I build secure, scalable, and user-focused web applications using
-                Python, Django, HTML, CSS, and JavaScript. I'm passionate about
-                creating solutions that combine clean design with reliable backend
-                functionality.
+                Python, Django, PostgreSQL, and modern frontend tools. Passionate about
+                architecting clean backends and high-performance system designs.
             </p>
-        
+
+            <!-- Call To Action Buttons -->
             <div class="hero-buttons">
-                <a href="#projects" class="btn-primary">
-                     <i class="fa-solid fa-code"></i>
-                     View Projects</a>
-                <a href="{% static 'files/Hanson_CV.pdf' %}"
-                class="btn-secondary"
-                download>
-                <i class="fa-solid fa-download"></i>
-                Download CV</a>
-            </div>
-            <div class="tech-stack">
-                <span>Python</span>
-                <span>Django</span>
-                <span>PostgreSQL</span>
-                <span>HTML5</span>
-                <span>CSS3</span>
-                <span>JavaScript</span>
-            </div>
-            <div class="hero-socials">
-                <a href="https://github.com/Brainxix" target="_blank" rel="nooperner noreferrer">
-                <i class="fa-brands fa-github"></i>
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fa-solid fa-code"></i>
+                    <span>View Projects</span>
                 </a>
-                <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237" target="_blank" rel="nooperner noreferrer">
+                <a href="{% static 'files/Hanson_CV.pdf' %}" class="btn btn-secondary" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <span>Download CV</span>
+                </a>
+            </div>
+
+            <!-- Tech Stack Pills -->
+            <div class="tech-stack">
+                <span class="tech-pill"><i class="fa-brands fa-python"></i> Python</span>
+                <span class="tech-pill"><i class="fa-solid fa-server"></i> Django</span>
+                <span class="tech-pill"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+                <span class="tech-pill"><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span class="tech-pill"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span class="tech-pill"><i class="fa-brands fa-js"></i> JavaScript</span>
+            </div>
+
+            <!-- Social Links -->
+            <div class="hero-socials">
+                <a href="https://github.com/Brainxix" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
                     <i class="fa-brands fa-linkedin"></i>
                 </a>
-                <a href="mailto:ezegbuhanson@gmail.com">
+                <a href="mailto:ezegbuhanson@gmail.com" aria-label="Send Email">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
             </div>
         </div>
-        <div class="hero-image">
-            <!-- Replace this later with your professional picture -->
-            <img src="{% static 'images/log.png' %}" alt="Chibuoke Hanson Ezegbu" loading="lazy">
+
+        <!-- Glowing Interactive Hero Image -->
+        <div class="hero-image-wrapper">
+            <div class="hero-image-glow"></div>
+            <div class="hero-image">
+                <img src="{% static 'images/log.png' %}" alt="Emele Gideon Ibe" loading="eager">
+            </div>
         </div>
     </div>
-
 </section>
+
+<!-- Include Remaining Sections -->
 {% include "sections/about.html" %}
 {% include "sections/skills.html" %}
 {% include "sections/projects.html" %}
 {% include "sections/experience.html" %}
 {% include "sections/contact.html" %}
-
-
 {% endblock %}
