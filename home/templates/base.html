@@ -1,17 +1,72 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- ================= META ================= -->
 
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta charset="UTF-8">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description"
+          content="Brainxix Portfolio - Backend Developer, Django Developer, Electronic Engineer and Problem Solver.">
+
+    <meta name="keywords"
+          content="Brainxix, Portfolio, Python, Django, Backend Developer, Electronic Engineer">
+
+    <meta name="author"
+          content="Brainxix">
+
+    <meta name="theme-color"
+          content="#2563EB">
+
+    <!-- ================= OPEN GRAPH ================= -->
+
+    <meta property="og:title"
+          content="Brainxix Portfolio">
+
+    <meta property="og:description"
+          content="Backend Developer specializing in Python and Django.">
+
+    <meta property="og:type"
+          content="website">
+
+    <!-- ================= TITLE ================= -->
+
+    <title>
+
+        {% block title %}
+            Brainxix Portfolio
+        {% endblock %}
+
+    </title>
+
+    <!-- ================= FAVICON ================= -->
+
+    <link rel="icon"
+          href="{% static 'images/favicon.ico' %}"
+          type="image/x-icon">
+
+    <!-- ================= FONTS ================= -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- ================= ICONS ================= -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ================= CSS ================= -->
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
@@ -25,82 +80,111 @@
 
     <link rel="stylesheet" href="{% static 'css/projects.css' %}">
 
-    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
     <link rel="stylesheet" href="{% static 'css/experience.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Brainxix Portfolio - Backend Developer, Django Developer, Electronic Engineer and Problem Solver.">
-
-    <title>
-        {% block title %}
-            My Portfolio
-        {% endblock %}
-    </title>
-
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
 
+    <!-- ================= SKIP LINK ================= -->
+
+    <a href="#main-content" class="skip-link">
+
+        Skip to content
+
+    </a>
+
+    <!-- ================= PRELOADER ================= -->
+
+    <div class="preloader">
+
+        <span class="loader"></span>
+
+    </div>
+
+    <!-- ================= SCROLL PROGRESS ================= -->
+
+    <div class="progress-bar"></div>
+
+    <!-- ================= CURSOR EFFECT ================= -->
+
+    <div class="cursor-glow"></div>
+
+    <div class="cursor-dot"></div>
+
     <!-- ================= HEADER ================= -->
+
     <header class="header">
 
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Primary Navigation">
 
             <div class="container">
 
                 <!-- Logo -->
-                <a href="/" class="logo">
-                    <img src="{% static 'images/log.png' %}" alt="Brainxix Logo">
+
+                <a href="{% url 'home' %}"
+                   class="logo"
+                   aria-label="Brainxix Home">
+
+                    <img src="{% static 'images/log.png' %}"
+                         alt="Brainxix Logo">
+
                 </a>
 
                 <!-- Navigation -->
+
                 <ul class="nav-links">
 
-                    <li><a href="#hero">Home</a></li>
+                    <li><a class="nav-link" href="#hero">Home</a></li>
 
-                    <li><a href="#about">About</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
 
-                    <li><a href="#skills">Skills</a></li>
+                    <li><a class="nav-link" href="#skills">Skills</a></li>
 
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a class="nav-link" href="#projects">Projects</a></li>
 
-                    <li><a href="#experience">Experience</a></li>
+                    <li><a class="nav-link" href="#experience">Experience</a></li>
 
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
 
                 </ul>
 
-                <!-- Right Side -->
+                <!-- Navigation Actions -->
+
                 <div class="nav-actions">
 
-                    <!-- Mobile Menu -->
-                    <button class="menu-btn" aria-label="Toggle navigation">
+                    <button class="menu-btn"
+                            aria-label="Toggle navigation">
+
                         <i class="fa-solid fa-bars"></i>
+
                     </button>
 
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle" aria-label="Toggle Theme">
+                    <button id="theme-toggle"
+                            aria-label="Toggle theme"
+                            aria-pressed="false">
+
                         <i class="fa-solid fa-moon"></i>
+
                     </button>
 
                 </div>
 
-        </div>
+            </div>
 
-    </nav>
+        </nav>
 
-</header>
+    </header>
+
     <!-- ================= MAIN ================= -->
 
-    <main class="main">
+    <main id="main-content" class="main">
 
         {% block content %}
         {% endblock %}
@@ -109,43 +193,96 @@
 
     <!-- ================= FOOTER ================= -->
 
-    <footer>
+    <footer class="footer">
 
         <div class="container">
 
-            <div class="footer-content">
+            <div class="footer-grid">
 
-                <h3>Brainxix</h3>
+                <!-- Brand -->
 
-                <p>
-                    Backend Developer • Electronic Engineer • Problem Solver
-                </p>
+                <div class="footer-brand">
 
-                <div class="social-links">
+                    <h3>Brainxix</h3>
 
-                    <a href="https://github.com/Brainxix"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <i class="fa-brands fa-github"></i>
-                        GitHub
-                    </a>
+                    <p>
 
-                    <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <i class="fa-brands fa-linkedin"></i>
-                        LinkedIn
-                    </a>
+                        Backend Developer passionate about building scalable,
+                        secure and modern web applications with Python and Django.
 
-                    <a href="mailto:ezegbuhanson@gmail.com">
-                        <i class="fa-solid fa-envelope"></i>
-                        Email
-                    </a>
+                    </p>
 
                 </div>
 
-                <p class="copyright">
+                <!-- Quick Links -->
+
+                <div class="footer-links">
+
+                    <h4>Quick Links</h4>
+
+                    <ul>
+
+                        <li><a href="#hero">Home</a></li>
+
+                        <li><a href="#about">About</a></li>
+
+                        <li><a href="#skills">Skills</a></li>
+
+                        <li><a href="#projects">Projects</a></li>
+
+                        <li><a href="#experience">Experience</a></li>
+
+                        <li><a href="#contact">Contact</a></li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Socials -->
+
+                <div class="footer-contact">
+
+                    <h4>Let's Connect</h4>
+
+                    <div class="social-links">
+
+                        <a href="https://github.com/Brainxix"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="GitHub">
+
+                            <i class="fa-brands fa-github"></i>
+
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="LinkedIn">
+
+                            <i class="fa-brands fa-linkedin"></i>
+
+                        </a>
+
+                        <a href="mailto:ezegbuhanson@gmail.com"
+                           aria-label="Email">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>
+
                     © <span id="year"></span> Brainxix. All Rights Reserved.
+
                 </p>
 
             </div>
@@ -154,7 +291,19 @@
 
     </footer>
 
+    <!-- ================= BACK TO TOP ================= -->
+
+    <button class="back-to-top"
+            aria-label="Back to Top">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script src="{% static 'js/script.js' %}"></script>
 
 </body>
+
 </html>

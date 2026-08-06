@@ -1,129 +1,270 @@
+
 {% load static %}
 
 <!-- ================= ABOUT SECTION ================= -->
 
-<section id="about" class="about">
+<section id="about" class="about reveal">
 
-    <div class="section-header">
+    <div class="container">
 
-        <span class="section-tag">About Me</span>
+        <!-- Section Heading -->
 
-        <h2>Turning Ideas into Reliable Digital Solutions</h2>
+        <div class="section-header reveal">
 
-        <p>
-            My journey combines engineering principles with software development
-            to create practical, efficient, and user-focused applications.
-        </p>
+            <span class="section-tag">
+                About Me
+            </span>
 
-    </div>
+            <h2 class="section-title">
 
-    <div class="about-content">
+                Building Digital Solutions with an Engineer's Mindset
 
-        <!-- Image -->
+            </h2>
 
-        <div class="about-image">
+            <p class="section-subtitle">
 
-            <img src="{% static 'images/hoodie.png' %}"
-                 alt="Chibuoke Hanson Ezegbu">
+                Combining engineering principles with modern backend development
+                to build secure, scalable and user-focused web applications.
+
+            </p>
 
         </div>
 
-        <!-- About Text -->
+        <!-- Main Content -->
 
-        <div class="about-text">
+        <div class="about-content">
 
-            <h3>From Electronic Engineering to Backend Development</h3>
+            <!-- Left -->
 
-            <p>
-                I'm <strong>Chibuoke Hanson Ezegbu</strong>, a graduate of
-                Electronic Engineering with a strong interest in backend software
-                development. My engineering background has shaped the way I
-                approach problems—analytically, methodically, and with a focus
-                on building dependable solutions.
-            </p>
+            <div class="about-image reveal">
 
-            <p>
-                As I expanded my knowledge beyond engineering, I discovered a
-                passion for developing web applications with Python and Django.
-                I enjoy designing systems that are secure, scalable, and easy to
-                maintain while continuously improving my technical skills through
-                real-world projects.
-            </p>
+                <div class="image-wrapper">
 
-            <p>
-                I believe learning never stops. Every project presents an
-                opportunity to solve meaningful problems, explore new
-                technologies, and grow both as a developer and as an engineer.
-            </p>
+                    <img
+                    src="{% static 'images/hoodie.png' %}"
+                    alt="Chibuoke Hanson Ezegbu"
+                    width="600"
+                    height="600"
+                    loading="lazy">
 
-            
+                    <div class="experience-badge">
 
-            <h3>From Electronic Engineering to Backend Development</h3>
+                        <span>Backend Developer</span>
 
-            <p>
-                I'm <strong>Chibuoke Hanson Ezegbu</strong>, a graduate of
-                Electronic Engineering with a strong interest in backend software
-                development...
-            </p>
+                        <strong>2025 Graduate</strong>
 
-            <p>
-                As I expanded my knowledge beyond engineering, I discovered a
-                passion for developing web applications with Python and Django...
-            </p>
+                    </div>
 
-            <p>
-                I believe learning never stops. Every project presents an
-                opportunity to solve meaningful problems, explore new
-                technologies, and grow both as a developer and as an engineer.
-            </p>
-
-            <!-- Core Highlights -->
-            <div class="about-highlights">
-
-                <span>Engineering Mindset</span>
-
-                <span>Problem Solving</span>
-
-                <span>Continuous Learning</span>
-
-                <span>Team Collaboration</span>
-
-                <span>Clean Code</span>
-
-                <span>Reliability</span>
+                </div>
 
             </div>
 
+            <!-- Right -->
 
+            <div class="about-text reveal">
+
+                <h3>
+
+                    From Electronic Engineering
+                    to Backend Development
+
+                </h3>
+
+                <p>
+
+                    I'm <strong>Chibuoke Hanson Ezegbu</strong>,
+                    an Electronic Engineering graduate with a passion for
+                    backend software development.
+
+                    My engineering background has helped me develop analytical
+                    thinking, attention to detail, and a structured approach
+                    to solving complex problems.
+
+                </p>
+
+                <p>
+
+                    Today, I build scalable web applications using
+                    Python and Django while continuously improving my
+                    software engineering skills through real-world projects.
+
+                </p>
+
+                <!-- Feature Cards -->
+
+                <div class="about-cards">
+
+                    <article class="about-card reveal">
+
+                        <i class="fa-solid fa-microchip"></i>
+
+                        <div>
+
+                            <h4>
+
+                                Engineering Foundation
+
+                            </h4>
+
+                            <p>
+
+                                Strong analytical and problem-solving mindset.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="about-card reveal">
+
+                        <i class="fa-solid fa-code"></i>
+
+                        <div>
+
+                            <h4>
+
+                                Backend Development
+
+                            </h4>
+
+                            <p>
+
+                                Building secure and scalable Django applications.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="about-card reveal">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <div>
+
+                            <h4>
+
+                                Continuous Growth
+
+                            </h4>
+
+                            <p>
+
+                                Learning new technologies every day.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- Skills -->
+
+                <div class="about-highlights">
+
+                    <span>Python</span>
+
+                    <span>Django</span>
+
+                    <span>REST APIs</span>
+
+                    <span>Git & GitHub</span>
+
+                    <span>PostgreSQL</span>
+
+                    <span>Problem Solving</span>
+
+                    <span>Team Collaboration</span>
+
+                    <span>Continuous Learning</span>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
 </section>
-
 <!-- ================= STATISTICS ================= -->
 
-<section class="stats">
+<section class="stats reveal">
 
-    <div class="stat-card">
-        <h3>3+</h3>
-        <p>Projects Completed</p>
-    </div>
+    <div class="container">
 
-    <div class="stat-card">
-        <h3>2025</h3>
-        <p>B.Eng Graduate</p>
-    </div>
+        <div class="stats-grid">
 
-    <div class="stat-card">
-        <h3>Python</h3>
-        <p>Primary Backend Language</p>
-    </div>
+            <div class="stat-card">
 
-    <div class="stat-card">
-        <h3>Open</h3>
-        <p>To Opportunities</p>
+                <h3 class="counter" data-target="3">
+
+                    0
+
+                </h3>
+
+                <p>
+
+                    Projects Completed
+
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3  class="counter" data-target="3">
+
+                    2025
+
+                </h3>
+
+                <p>
+
+                    B.Eng Graduate
+
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3  class="counter" data-target="3">
+
+                    Python
+
+                </h3>
+
+                <p>
+
+                    Primary Language
+
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3  class="counter" data-target="3">
+
+                    Open
+
+                </h3>
+
+                <p>
+ 
+                    Available for Opportunities
+
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
 
 </section>
