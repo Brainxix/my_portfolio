@@ -120,107 +120,77 @@
 
     </main>
 
-    <!-- ================= FOOTER ================= -->
+{% load static %}
 
-    <footer class="footer">
-
-        <div class="container">
-
-            <div class="footer-grid">
-
-                <!-- Brand -->
-
-                <div class="footer-brand">
-
-                    <h3>Brainxix</h3>
-
-                    <p>
-
-                        Backend Developer passionate about building scalable,
-                        secure and modern web applications with Python and Django.
-
-                    </p>
-
+<!-- ================= FOOTER SECTION ================= -->
+<footer class="footer">
+    <div class="container">
+        
+        <div class="footer-grid">
+            
+            <!-- Brand & Summary -->
+            <div class="footer-brand">
+                <h3>Hanson Ezegbu</h3>
+                <p>
+                    Software developer focused on creating performant web applications, clean architecture, and modern digital experiences.
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/Brainxix" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://x.com/Brainxix" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="https://web.facebook.com/profile.php?id=61583801423434" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
                 </div>
-
-                <!-- Quick Links -->
-
-                <div class="footer-links">
-
-                    <h4>Quick Links</h4>
-
-                    <ul>
-
-                        <li><a href="#hero">Home</a></li>
-
-                        <li><a href="#about">About</a></li>
-
-                        <li><a href="#skills">Skills</a></li>
-
-                        <li><a href="#projects">Projects</a></li>
-
-                        <li><a href="#experience">Experience</a></li>
-
-                        <li><a href="#contact">Contact</a></li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Socials -->
-
-                <div class="footer-contact">
-
-                    <h4>Let's Connect</h4>
-
-                    <div class="social-links">
-
-                        <a href="https://github.com/Brainxix"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="GitHub">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="LinkedIn">
-
-                            <i class="fa-brands fa-linkedin"></i>
-
-                        </a>
-
-                        <a href="mailto:ezegbuhanson@gmail.com"
-                           aria-label="Email">
-
-                            <i class="fa-solid fa-envelope"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
             </div>
 
-            <div class="footer-bottom">
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills & Stack</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
 
-                <p>
-
-                    © <span id="year"></span> Brainxix. All Rights Reserved.
-
-                </p>
-
+            <!-- Direct Contact -->
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <ul class="footer-contact-info">
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:ezegbuhanson@gmail.com">ezegbuhanson@gmail.com</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:+2348116508239">+234 811 650 8239</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Port Harcourt, Nigeria</span>
+                    </li>
+                </ul>
             </div>
 
         </div>
 
-    </footer>
+        <!-- Copyright Bar -->
+        <div class="footer-bottom">
+            <p>&copy; {% now "Y" %} Chibuoke Hanson Ezegbu. All rights reserved.</p>
+        </div>
 
-    <!-- ================= BACK TO TOP ================= -->
+    </div>
+</footer>   
+ <!-- ================= BACK TO TOP ================= -->
 
     <button class="back-to-top"
             aria-label="Back to Top">
