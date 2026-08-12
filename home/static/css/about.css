@@ -171,6 +171,8 @@
 
 /* Experience Badge */
 .experience-badge {
+    position: relative;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -195,8 +197,23 @@
     box-shadow: 0 0 0.7rem rgba(6, 182, 212, 0.8);
 }
 
+.experience-badge::after {
+    content: "";
+    position: absolute;
+    inset: -0.18rem;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 0.12rem;
+    background: conic-gradient(from var(--badge-angle), var(--accent-cyan), transparent 15%, transparent 60%, var(--accent-indigo), transparent 78%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: badge-circuit-orbit 2.2s linear infinite;
+    pointer-events: none;
+}
+
 .experience-badge:hover {
-    transform: translateY(-0.3rem);
+    transform: scale(1.03);
     box-shadow: 0 1rem 2.5rem rgba(6, 182, 212, 0.2);
 }
 
@@ -367,6 +384,41 @@
     transition: var(--transition);
 }
 
+.experience-badge span::after {
+    content: "_";
+    color: var(--accent-cyan);
+    margin-left: 0.14rem;
+    animation: badge-terminal-cursor 0.9s step-end infinite;
+}
+
+@property --badge-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes badge-circuit-orbit {
+    to { --badge-angle: 360deg; }
+}
+
+@keyframes badge-terminal-cursor {
+    50% { opacity: 0; }
+}
+
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    top: -45%;
+    left: -40%;
+    width: 25%;
+    height: 190%;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
+    transform: rotate(22deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
 .stat-card:hover {
     transform: translateY(-0.5rem);
     border-color: var(--accent-cyan);
@@ -387,7 +439,11 @@
 }
 
 .stat-card.active {
-    animation: stat-card-enter 0.55s ease both;
+    animation: stat-card-enter 0.55s ease both, stat-card-glow 1.8s 0.6s ease-in-out infinite;
+}
+
+.stat-card.active::before {
+    animation: stat-card-shine 2.4s 0.7s ease-in-out infinite;
 }
 
 .stat-card.active:nth-child(2) { animation-delay: 0.1s; }
@@ -395,7 +451,7 @@
 .stat-card.active:nth-child(4) { animation-delay: 0.3s; }
 
 .stat-card.active h3 {
-    animation: stat-value-pop 0.5s 0.2s cubic-bezier(0.2, 1.4, 0.45, 1) both;
+    animation: stat-value-pop 0.5s 0.2s cubic-bezier(0.2, 1.4, 0.45, 1) both, stat-value-pulse 1.8s 0.8s ease-in-out infinite;
 }
 
 .stat-card.active p {
@@ -415,6 +471,23 @@
 @keyframes stat-label-rise {
     from { opacity: 0; transform: translateY(0.45rem); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes stat-card-glow {
+    50% {
+        border-color: rgba(6, 182, 212, 0.65);
+        box-shadow: 0 0.7rem 1.8rem rgba(6, 182, 212, 0.16), var(--shadow-sm);
+    }
+}
+
+@keyframes stat-card-shine {
+    0%, 36% { left: -40%; opacity: 0; }
+    45% { opacity: 1; }
+    68%, 100% { left: 125%; opacity: 0; }
+}
+
+@keyframes stat-value-pulse {
+    50% { transform: scale(1.08); color: var(--accent-indigo); }
 }
 
 .stat-card p {
