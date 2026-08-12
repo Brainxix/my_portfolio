@@ -1,155 +1,48 @@
-🌐 Personal Portfolio Website
+# Chibuoke Hanson Ezegbu — Portfolio
 
-A modern, responsive, and dynamic portfolio website built with *Django* to showcase my skills, projects, certifications, and professional journey as a software developer.
+A responsive Django portfolio website that showcases my work as a backend developer and Electronic Engineering graduate. It highlights my Python, Django, PostgreSQL, web-development, and IoT experience.
 
-This project serves as my personal website and digital portfolio, highlighting my growth in backend development with Python and Django while providing visitors with an easy way to learn about me and get in touch.
+## Features
 
+- Responsive single-page portfolio
+- About, skills, projects, experience, and contact sections
+- Downloadable CV
+- Project-category filters
+- Light and dark theme toggle
+- Accessible navigation, skip link, and reduced-motion-friendly interactions
 
+## Tech stack
 
-⚡Features
+- Python and Django
+- HTML, CSS, and JavaScript
+- SQLite for local development
+- PostgreSQL for production
 
-* Responsive and modern user interface
-* Home section
-* About Me section
-* Skills showcase
-* Projects portfolio
-* Resume/CV section
-* Contact form
-* Django Admin for content management
-* Blog section *(coming soon)*
-* Light/Dark mode *(planned)*
+## Run locally
 
+1. Create and activate a virtual environment.
+2. Install the dependencies:
 
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-🛠️ Tech Stack
+3. Apply migrations:
 
-Backend
+   ```bash
+   python manage.py migrate
+   ```
 
-* Python
-* Django
+4. Start the server:
 
-Frontend
+   ```bash
+   python manage.py runserver
+   ```
 
-* HTML5
-* CSS3
-* JavaScript
+5. Visit `http://127.0.0.1:8000/`.
 
-Database
+## Contact
 
-* SQLite (Development)
-* PostgreSQL (Production)
-
- Tools
-
-* Git
-* GitHub
-* Visual Studio Code
-
----
-
-📂 Project Structure
-
-```text
-portfolio/
-├── portfolio/
-├── home/
-├── about/
-├── projects/
-├── skills/
-├── resume/
-├── contact/
-├── blog/
-├── templates/
-├── static/
-├── media/
-├── README.md
-├── requirements.txt
-├── .gitignore
-└── manage.py
-```
-
-
-
- ⚙️ Installation
-
-1. Clone the repository.
-
-2. Create and activate a virtual environment.
-
-3. Install the project dependencies.
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Apply database migrations.
-
-```bash
-python manage.py migrate
-```
-
-5. Start the development server.
-
-```bash
-python manage.py runserver
-```
-
-6. Open your browser and visit:
-
-```text
-http://127.0.0.1:8000/
-```
-
-
-
- 📸 Screenshots
-
-Screenshots will be added as the project develops.
-
-
-
-🎯 Project Goals
-
-* Build a professional portfolio using Django.
-* Strengthen backend development skills.
-* Apply Django best practices.
-* Showcase completed projects and technical skills.
-* Document my software development journey.
-
-
-
-📌 Future Improvements 
-
-* Project search and filtering
-* Project categories
-* Blog management
-* Dark mode
-* Visitor analytics
-* Email integration
-* Project tags
-* REST API integration
-
-
-
- 🤝 Contributing
-
-This project is a personal portfolio. Suggestions and feedback are always welcome.
-
-
-
-📄 License
-
-This project is licensed under the MIT License.
-
-
-👨‍💻 Author
-
-*Chibuoke Hanson Ezegbu*
-
-Backend Developer | Python & Django Enthusiast
-
-GitHub: *Coming Soon*
-
-LinkedIn: *Coming Soon*
-
-Portfolio: *Coming Soon*
+- Email: [ezegbuhanson@gmail.com](mailto:ezegbuhanson@gmail.com)
+- GitHub: [Brainxix](https://github.com/Brainxix)
+- LinkedIn: [Chibuoke Ezegbu](https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237)

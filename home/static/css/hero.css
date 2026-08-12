@@ -75,8 +75,32 @@
     font-weight: 800;
     letter-spacing: -0.02em;
     background: linear-gradient(135deg, var(--dark) 30%, var(--accent-cyan) 100%);
-    /* -webkit-background-clip: text; */
+    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.hero-badge .badge-icon {
+    animation: badge-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes badge-bounce {
+    50% { transform: translateY(-0.18rem) rotate(-10deg); }
+}
+
+.typing-caret {
+    display: inline-block;
+    width: 0.09em;
+    height: 0.9em;
+    margin-left: 0.12em;
+    vertical-align: -0.05em;
+    border-radius: 999px;
+    background: var(--accent-cyan);
+    animation: typing-caret 0.85s step-end infinite;
+}
+
+@keyframes typing-caret {
+    50% { opacity: 0; }
 }
 
 .hero-role {
@@ -278,4 +302,11 @@
     .hero-image img {
         width: min(80%, 320px);
     }
+}
+
+.tech-pill:nth-child(odd) { animation: pill-float 3s ease-in-out infinite; }
+.tech-pill:nth-child(even) { animation: pill-float 3s ease-in-out 0.45s infinite reverse; }
+
+@keyframes pill-float {
+    50% { transform: translateY(-0.22rem); }
 }

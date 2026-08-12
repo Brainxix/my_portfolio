@@ -52,6 +52,15 @@
     opacity: 1;
 }
 
+.skill-category:hover h3 i {
+    animation: skill-icon-pulse 0.7s ease both;
+}
+
+.skill-category:hover h3::after {
+    width: 100%;
+    background: var(--gradient-accent);
+}
+
 /* Headers & Icons */
 .skill-category h3 {
     display: flex;
@@ -99,12 +108,50 @@
     transition: var(--transition);
 }
 
+.skill-category.active .skill-items span { animation: skill-chip-pop 0.45s ease both; }
+.skill-category.active h3 i { animation: skill-heading-pop 0.5s 0.05s ease both; }
+.skill-category.active h3::after { animation: skill-line-grow 0.55s 0.12s ease both; }
+.skill-category.active .skill-items span:nth-child(1) { animation-delay: 0.12s; }
+.skill-category.active .skill-items span:nth-child(2) { animation-delay: 0.2s; }
+.skill-category.active .skill-items span:nth-child(3) { animation-delay: 0.28s; }
+.skill-category.active .skill-items span:nth-child(4) { animation-delay: 0.36s; }
+.skill-category.active .skill-items span:nth-child(5) { animation-delay: 0.44s; }
+
+.skill-category:hover .skill-items span:nth-child(1) { animation: skill-chip-wave 0.45s ease both; }
+.skill-category:hover .skill-items span:nth-child(2) { animation: skill-chip-wave 0.45s 0.06s ease both; }
+.skill-category:hover .skill-items span:nth-child(3) { animation: skill-chip-wave 0.45s 0.12s ease both; }
+.skill-category:hover .skill-items span:nth-child(4) { animation: skill-chip-wave 0.45s 0.18s ease both; }
+.skill-category:hover .skill-items span:nth-child(5) { animation: skill-chip-wave 0.45s 0.24s ease both; }
+
+@keyframes skill-chip-pop {
+    from { opacity: 0; transform: translateY(0.7rem) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes skill-heading-pop {
+    0% { opacity: 0; transform: scale(0.4) rotate(-18deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes skill-line-grow {
+    from { width: 0; }
+    to { width: 45px; }
+}
+
+@keyframes skill-chip-wave {
+    50% { transform: translateY(-0.4rem) scale(1.06); background: rgba(6, 182, 212, 0.12); border-color: var(--accent-cyan); }
+}
+
 .skill-items span:hover {
     background: var(--accent-cyan);
     color: var(--bg-primary);
     border-color: var(--accent-cyan);
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 6px 15px rgba(6, 182, 212, 0.25);
+}
+
+@keyframes skill-icon-pulse {
+    50% { transform: scale(1.25) rotate(-8deg); }
 }
 
 /* Stagger Animation Speeds */

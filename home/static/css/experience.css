@@ -48,6 +48,29 @@
     transform: translateY(0);
 }
 
+.experience-card.visible .experience-date::after {
+    animation: timeline-dot-ping 0.65s 0.2s ease both;
+}
+
+.experience-card.visible .experience-content > * {
+    animation: experience-content-rise 0.45s ease both;
+}
+
+.experience-card.visible .experience-content h3 { animation-delay: 0.1s; }
+.experience-card.visible .experience-content h4 { animation-delay: 0.18s; }
+.experience-card.visible .experience-content p { animation-delay: 0.26s; }
+
+@keyframes timeline-dot-ping {
+    0% { transform: scale(0); box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.6); }
+    70% { transform: scale(1.2); box-shadow: 0 0 0 0.7rem rgba(6, 182, 212, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+}
+
+@keyframes experience-content-rise {
+    from { opacity: 0; transform: translateY(0.65rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .experience-card:hover {
     box-shadow: var(--shadow-md);
     transform: translateY(-4px);

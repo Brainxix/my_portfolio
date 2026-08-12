@@ -107,16 +107,6 @@
         justify-content: center;
     }
 
-    .experience-badge {
-        right: 50%;
-        bottom: -1rem;
-        transform: translateX(50%);
-    }
-
-    .experience-badge:hover {
-        transform: translateX(50%) translateY(-0.3rem);
-    }
-
     /* --- Statistics --- */
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -203,20 +193,6 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-    }
-
-    .experience-badge {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        transform: none;
-        margin-top: 1.5rem;
-        width: 100%;
-        align-items: center;
-    }
-
-    .experience-badge:hover {
-        transform: translateY(-0.3rem);
     }
 
     /* --- Grid Layout Mobile Stacks --- */
