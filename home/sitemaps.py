@@ -12,4 +12,4 @@ class StaticViewSitemap(Sitemap):
         ]
 
     def location(self, item):
-        return reverse(item)a
+        return reverse(item)
