@@ -148,24 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.65 });
     document.querySelectorAll(".counter").forEach((counter) => counterObserver.observe(counter));
 
-    const hoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (hoverCapable && !reduceMotion) {
-        document.querySelectorAll(".about-card, .stat-card, .project-card, .skill-category").forEach((card) => {
-            card.classList.add("card-spotlight");
-            card.addEventListener("pointermove", (event) => {
-                const rect = card.getBoundingClientRect();
-                const x = event.clientX - rect.left;
-                const y = event.clientY - rect.top;
-                card.style.setProperty("--x", `${x}px`);
-                card.style.setProperty("--y", `${y}px`);
-                const rotateX = ((y - rect.height / 2) / rect.height) * -3;
-                const rotateY = ((x - rect.width / 2) / rect.width) * 3;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-            });
-            card.addEventListener("pointerleave", () => { card.style.transform = ""; });
-        });
-    }
-
+    
     const filterButtons = document.querySelectorAll(".filter-btn");
     const projectCards = document.querySelectorAll(".project-card");
     filterButtons.forEach((button) => {
@@ -203,18 +186,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    if (hoverCapable && !reduceMotion) {
-        const cursorDot = document.getElementById("cursorDot");
-        const cursorGlow = document.getElementById("cursorGlow");
-        window.addEventListener("pointermove", (event) => {
-            if (cursorDot) {
-                cursorDot.style.left = `${event.clientX}px`;
-                cursorDot.style.top = `${event.clientY}px`;
-            }
-            if (cursorGlow) {
-                cursorGlow.style.left = `${event.clientX}px`;
-                cursorGlow.style.top = `${event.clientY}px`;
-            }
-        }, { passive: true });
-    }
-});
+    
