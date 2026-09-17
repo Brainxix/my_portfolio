@@ -1,34 +1,35 @@
 /* ===== BASE.CSS ===== */
 
 :root {
-    /* Graphite / Copper Palette — grounded in PCB & circuit materials, not neon-tech default */
-    --bg-primary: #15161b;
-    --bg-secondary: #1b1c22;
-    --bg-card: #1d1e25;
-    --bg-glass: rgba(27, 28, 34, 0.85);
+    /* Graphite / Copper Palette — circuit board & PCB inspired */
+    --bg-primary: #121317;
+    --bg-secondary: #191a20;
+    --bg-card: #1c1d24;
+    --bg-glass: rgba(25, 26, 32, 0.85);
 
     --text: #edebe5;
     --text-light: #96958c;
     --dark: #f5f3ee;
-    --white: #15161b;
+    --white: #121317;
     --border: rgba(237, 235, 229, 0.1);
 
-    /* Two accents only — spend boldness in one place */
-    --accent-copper: #c77d3f;
+    --accent-copper: #d9873f;
     --accent-copper-dim: #a8672f;
-    --accent-slate: #4e6b6e;
+    --accent-copper-glow: rgba(217, 135, 63, 0.55);
+    --accent-slate: #5b8285;
+    --accent-led: #7dd68c;
 
     --gradient-primary: linear-gradient(135deg, var(--accent-copper), var(--accent-copper-dim));
 
-    /* UI Measurements */
     --max-width: 75rem;
     --section-spacing: 5.625rem;
-    --navbar-bg: rgba(21, 22, 27, 0.92);
+    --navbar-bg: rgba(18, 19, 23, 0.92);
     --header-height: 4.6875rem;
 
     --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.35);
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.45);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.55);
+    --shadow-glow: 0 0 1.5rem var(--accent-copper-glow);
 
     --radius-sm: 0.25rem;
     --radius-md: 0.375rem;
@@ -41,7 +42,6 @@
     --font-mono: "JetBrains Mono", monospace;
 }
 
-/* Light Mode Overrides */
 body.light-mode {
     --bg-primary: #f6f4ef;
     --bg-secondary: #eeebe3;
@@ -60,7 +60,6 @@ body.light-mode {
     --shadow-lg: 0 22px 38px -10px rgba(23, 24, 28, 0.18);
 }
 
-/* Reset & Base Setup */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -88,10 +87,45 @@ h1, h2, h3, h4 {
 
 .container {
     width: 100%;
-    max-width: var(--max-width);
+    max-width: 100%;
     margin-inline: auto;
-    padding-inline: 1.5rem;
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
     box-sizing: border-box;
+}
+
+/* =====================================================
+   PCB CIRCUIT BACKGROUND — faint grid + traveling current
+===================================================== */
+
+.circuit-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 2.75rem 2.75rem;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 90%);
+}
+
+.circuit-bg::before,
+.circuit-bg::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 40%;
+    background: linear-gradient(90deg, transparent, var(--accent-copper) 20%, transparent 70%);
+    opacity: 0.6;
+    animation: circuit-flow 5s linear infinite;
+}
+
+.circuit-bg::before { top: 22%; left: -40%; }
+.circuit-bg::after { top: 68%; left: -40%; animation-duration: 7s; animation-delay: 1.5s; }
+
+@keyframes circuit-flow {
+    to { transform: translateX(220%); }
 }
 
 /* Skip Link */
@@ -100,18 +134,16 @@ h1, h2, h3, h4 {
     top: -6.25rem;
     left: 1rem;
     background: var(--accent-copper);
-    color: #15161b;
+    color: #121317;
     font-weight: 600;
     padding: 0.5rem 1rem;
     z-index: 2000;
     border-radius: var(--radius-sm);
     transition: top 0.2s ease;
 }
-.skip-link:focus {
-    top: 1rem;
-}
+.skip-link:focus { top: 1rem; }
 
-/* Preloader — single mark, no spinner theatrics */
+/* Preloader */
 .preloader {
     position: fixed;
     inset: 0;
@@ -122,12 +154,7 @@ h1, h2, h3, h4 {
     justify-content: center;
     transition: opacity 0.4s ease, visibility 0.4s ease;
 }
-
-.preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
+.preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
 .loader {
     width: 2.25rem;
@@ -137,22 +164,37 @@ h1, h2, h3, h4 {
     border-radius: 50%;
     display: inline-block;
     animation: rotation 0.8s linear infinite;
+    box-shadow: var(--shadow-glow);
 }
+@keyframes rotation { to { transform: rotate(360deg); } }
 
-@keyframes rotation {
-    to { transform: rotate(360deg); }
-}
-
-/* Scroll Progress Bar — kept, functional signal not decoration */
+/* Scroll Progress Bar */
 .progress-bar {
     position: fixed;
     top: 0;
     left: 0;
     height: 2px;
     background: var(--accent-copper);
+    box-shadow: 0 0 0.6rem var(--accent-copper-glow);
     width: 0%;
     z-index: 1001;
     transition: width 0.1s ease-out;
+}
+
+/* LED Status Dot — the recurring "power light" motif */
+.led-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent-led);
+    box-shadow: 0 0 0.5rem var(--accent-led);
+    animation: led-blink 2.2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes led-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
 }
 
 /* Header & Navbar */
@@ -175,21 +217,21 @@ h1, h2, h3, h4 {
     min-height: var(--header-height);
 }
 
-.logo {
-    display: inline-flex;
-    align-items: center;
-}
-
+.logo { display: inline-flex; align-items: center; }
 .logo img {
     height: 2.1rem;
     width: auto;
+    transition: filter 0.3s ease;
+    animation: logo-pulse 3.5s ease-in-out infinite;
+}
+.logo:hover img { filter: drop-shadow(0 0 0.5rem var(--accent-copper-glow)); }
+
+@keyframes logo-pulse {
+    0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+    50% { filter: drop-shadow(0 0 0.4rem var(--accent-copper-glow)); }
 }
 
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
 
 .nav-link {
     font-family: var(--font-mono);
@@ -198,17 +240,42 @@ h1, h2, h3, h4 {
     color: var(--text-light);
     text-decoration: none;
     transition: var(--transition);
+    position: relative;
 }
 
-.nav-link:hover, .nav-link.active {
-    color: var(--accent-copper);
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.4rem;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-copper);
+    box-shadow: 0 0 0.5rem var(--accent-copper-glow);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transition);
 }
 
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.nav-link:hover, .nav-link.active { color: var(--accent-copper); }
+.nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+/* Active section indicator — pulsing signal dot */
+.nav-link.active::before {
+    content: "";
+    position: absolute;
+    left: -0.85rem;
+    top: 50%;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: var(--accent-led);
+    box-shadow: 0 0 0.5rem var(--accent-led);
+    transform: translateY(-50%);
+    animation: led-blink 2.2s ease-in-out infinite;
 }
+
+.nav-actions { display: flex; align-items: center; gap: 1rem; }
 
 #theme-toggle, .menu-btn {
     background: transparent;
@@ -224,11 +291,10 @@ h1, h2, h3, h4 {
 #theme-toggle:hover, .menu-btn:hover {
     color: var(--accent-copper);
     border-color: var(--accent-copper);
+    box-shadow: var(--shadow-glow);
 }
 
-.menu-btn {
-    display: none;
-}
+.menu-btn { display: none; }
 
 /* Back To Top */
 .back-to-top {
@@ -239,7 +305,7 @@ h1, h2, h3, h4 {
     height: 2.75rem;
     border-radius: 50%;
     background: var(--accent-copper);
-    color: #15161b;
+    color: #121317;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -249,38 +315,77 @@ h1, h2, h3, h4 {
     z-index: 900;
     box-shadow: var(--shadow-md);
 }
-
-.back-to-top.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.back-to-top:hover {
-    transform: translateY(-0.25rem);
-}
+.back-to-top.active { opacity: 1; visibility: visible; }
+.back-to-top:hover { transform: translateY(-0.25rem); box-shadow: var(--shadow-glow); }
 
 /* Scrollbars */
-::-webkit-scrollbar {
-    width: 0.625rem;
-}
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-}
+::-webkit-scrollbar { width: 0.625rem; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb {
     background: var(--bg-card);
     border: 2px solid var(--bg-primary);
     border-radius: 0.625rem;
 }
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-copper-dim);
+::-webkit-scrollbar-thumb:hover { background: var(--accent-copper-dim); }
+
+/* Glow-on-hover utility — applied to buttons, cards, pills across sections */
+.glow-hover {
+    transition: var(--transition), box-shadow 0.3s ease;
+}
+.glow-hover:hover {
+    box-shadow: var(--shadow-glow);
+    border-color: var(--accent-copper) !important;
 }
 
-/* Responsive */
-@media (max-width: 48rem) {
-    .menu-btn {
-        display: block;
-    }
+/* IC-chip corner pins — decorative tick marks on card corners */
+.chip-card {
+    position: relative;
+}
+.chip-card::before, .chip-card::after {
+    content: "";
+    position: absolute;
+    width: 0.6rem;
+    height: 0.6rem;
+    border: 1px solid var(--accent-copper);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+.chip-card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.chip-card::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.chip-card:hover::before, .chip-card:hover::after { opacity: 1; }
 
+/* Scroll Reveal — scan-line sweep instead of plain fade */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    overflow: hidden;
+}
+
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.reveal.active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -30%;
+    width: 30%;
+    background: linear-gradient(90deg, transparent, var(--accent-copper-glow), transparent);
+    animation: scan-sweep 0.7s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes scan-sweep {
+    from { left: -30%; opacity: 1; }
+    to { left: 100%; opacity: 0; }
+}
+
+.header.scrolled { box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.2); }
+
+@media (max-width: 48rem) {
+    .menu-btn { display: block; }
     .nav-links {
         position: fixed;
         top: var(--header-height);
@@ -295,14 +400,7 @@ h1, h2, h3, h4 {
         border-left: 1px solid var(--border);
         transition: right 0.3s ease;
     }
-
-    .nav-links.active {
-        right: 0;
-    }
-}
-
-.header.scrolled {
-    box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.2);
+    .nav-links.active { right: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -312,5 +410,4 @@ h1, h2, h3, h4 {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
     }
-    }
-        
+}

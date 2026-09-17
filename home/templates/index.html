@@ -8,8 +8,8 @@
 <section id="hero" class="hero">
     <div class="container">
         <div class="hero-text">
-            <!-- Status Badge -->
-            <div class="hero-badge animate-fade-in">
+            <div class="hero-badge">
+                <span class="led-dot"></span>
                 <span class="badge-icon"><i class="fa-solid fa-graduation-cap"></i></span>
                 <span>Graduate Electronic Engineer • Backend Developer</span>
             </div>
@@ -17,26 +17,24 @@
             <p class="greeting">Hello,</p>
             <h1 class="hero-name">I'm <span id="typedName" data-text="Chibuoke Hanson Ezegbu">Chibuoke Hanson Ezegbu</span><span class="typing-caret" aria-hidden="true"></span></h1>
             <h2 class="hero-role">Backend Developer • Python & Django Specialist</h2>
-            
+
             <p class="hero-description">
                 I build secure, scalable, and user-focused web applications using
                 Python, Django, PostgreSQL, and modern frontend tools. Passionate about
                 architecting clean backends and high-performance system designs.
             </p>
 
-            <!-- Call To Action Buttons -->
             <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
+                <a href="#projects" class="btn btn-primary magnetic">
                     <i class="fa-solid fa-code"></i>
                     <span>View Projects</span>
                 </a>
-                <a href="{% static 'resume/Hanson_cv.pdf' %}" class="btn btn-secondary" download>
+                <a href="{% static 'resume/Hanson_cv.pdf' %}" class="btn btn-secondary magnetic" download>
                     <i class="fa-solid fa-file-arrow-down"></i>
                     <span>Download CV</span>
                 </a>
             </div>
 
-            <!-- Tech Stack Pills -->
             <div class="tech-stack">
                 <span class="tech-pill"><i class="fa-brands fa-python"></i> Python</span>
                 <span class="tech-pill"><i class="fa-solid fa-server"></i> Django</span>
@@ -46,29 +44,42 @@
                 <span class="tech-pill"><i class="fa-brands fa-js"></i> JavaScript</span>
             </div>
 
-            <!-- Social Links -->
             <div class="hero-socials">
-                <a href="https://github.com/Brainxix" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                <a href="https://github.com/Brainxix" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="magnetic">
                     <i class="fa-brands fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                <a href="https://www.linkedin.com/in/chibuoke-ezegbu-a5b259237" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="magnetic">
                     <i class="fa-brands fa-linkedin"></i>
                 </a>
-                <a href="mailto:ezegbuhanson@gmail.com" aria-label="Send Email">
+                <a href="mailto:ezegbuhanson@gmail.com" aria-label="Send Email" class="magnetic">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Glowing Interactive Hero Image -->
         <div class="hero-image-wrapper">
-            <div class="hero-image-glow"></div>
-            <div class="hero-image">
+            <div class="hero-image tilt-card">
                 <img src="{% static 'images/log.png' %}" alt="Chibuoke Hanson Ezegbu" loading="eager">
             </div>
         </div>
     </div>
 </section>
+
+<!-- ================= TECH MARQUEE ================= -->
+<div class="marquee">
+    <div class="marquee-track">
+        <span class="marquee-item"><i class="fa-brands fa-python"></i> Python</span>
+        <span class="marquee-item"><i class="fa-solid fa-server"></i> Django</span>
+        <span class="marquee-item"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+        <span class="marquee-item"><i class="fa-solid fa-microchip"></i> Embedded Systems</span>
+        <span class="marquee-item"><i class="fa-solid fa-satellite-dish"></i> IoT / ESP32</span>
+        <span class="marquee-item"><i class="fa-brands fa-python"></i> Python</span>
+        <span class="marquee-item"><i class="fa-solid fa-server"></i> Django</span>
+        <span class="marquee-item"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+        <span class="marquee-item"><i class="fa-solid fa-microchip"></i> Embedded Systems</span>
+        <span class="marquee-item"><i class="fa-solid fa-satellite-dish"></i> IoT / ESP32</span>
+    </div>
+</div>
 
 <!-- Include Remaining Sections -->
 {% include "sections/about.html" %}

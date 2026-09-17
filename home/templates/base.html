@@ -33,7 +33,6 @@
     <!-- ================= CSS ================= -->
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/hero.css' %}">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" href="{% static 'css/skills.css' %}">
@@ -42,9 +41,11 @@
     <link rel="stylesheet" href="{% static 'css/contact.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/effects.css' %}">
 
     <!-- deffered js load -->
     <script src="{% static 'js/script.js' %}" defer></script>
+    <script src="{% static 'js/effects.js' %}" defer></script>
 </head>
 <body class="dark-mode">
 
@@ -62,8 +63,9 @@
 
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- ================= CURSOR EFFECT ================= -->
+    <!-- ================= GENERATIVE CIRCUIT BACKGROUND ================= -->
 
+    <canvas id="circuitCanvas"></canvas>
 
     <!-- ================= HEADER ================= -->
 
@@ -115,7 +117,6 @@
 
 {% load static %}
 
-<!-- ================= FOOTER SECTION ================= -->
 <!-- ================= FOOTER SECTION ================= -->
 <footer class="footer">
     <div class="container">
@@ -182,6 +183,18 @@
             <p>&copy; {% now "Y" %} Chibuoke Hanson Ezegbu. All rights reserved.</p>
         </div>
 
+    </div>
+
+    <!-- ================= FOOTER MARQUEE ================= -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span class="marquee-item"><i class="fa-solid fa-microchip"></i> Built with Django</span>
+            <span class="marquee-item"><i class="fa-solid fa-code-branch"></i> Open to Work</span>
+            <span class="marquee-item"><i class="fa-solid fa-satellite-dish"></i> Backend Developer</span>
+            <span class="marquee-item"><i class="fa-solid fa-microchip"></i> Built with Django</span>
+            <span class="marquee-item"><i class="fa-solid fa-code-branch"></i> Open to Work</span>
+            <span class="marquee-item"><i class="fa-solid fa-satellite-dish"></i> Backend Developer</span>
+        </div>
     </div>
 </footer>
  <!-- ================= BACK TO TOP ================= -->

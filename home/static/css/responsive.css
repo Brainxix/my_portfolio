@@ -5,7 +5,7 @@
 /* ==========================================================
    TABLETS & SMALL LAPTOPS (<= 992px)
 ========================================================== */
-@media (max-width: 992px) {
+@media (max-width: 62rem) {
 
     /* --- Navbar & Mobile Menu --- */
     .menu-btn {
@@ -21,7 +21,7 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: var(--bg-card, #0f172a);
+        background: var(--bg-card);
         backdrop-filter: blur(1rem);
         border-bottom: 1px solid var(--border);
         display: flex;
@@ -35,7 +35,7 @@
     }
 
     .nav-links.active {
-        max-height: 500px;
+        max-height: 31.25rem;
     }
 
     .nav-links li {
@@ -48,24 +48,24 @@
         padding: 1.1rem;
         text-align: center;
         color: var(--text-light);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid var(--border);
         transition: var(--transition);
     }
 
     .nav-links a:hover {
-        color: var(--accent-cyan);
-        background: rgba(6, 182, 212, 0.05);
+        color: var(--accent-copper);
+        background: rgba(217, 135, 63, 0.06);
     }
 
     .logo img {
-        width: 70px;
+        height: 1.9rem;
     }
 
     /* --- Hero Section --- */
     .hero .container {
-        flex-direction: column-reverse;
+        grid-template-columns: 1fr;
         text-align: center;
-        gap: 3.5rem;
+        gap: 3rem;
     }
 
     .hero-description {
@@ -85,17 +85,17 @@
     /* --- About Section --- */
     .about-content {
         grid-template-columns: 1fr;
-        gap: 3.5rem;
+        gap: 3rem;
         text-align: center;
     }
 
     .about-image {
         order: -1;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     .about-text {
-        max-width: 45rem;
+        max-width: 40rem;
         margin-inline: auto;
     }
 
@@ -112,10 +112,16 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* --- Skills --- */
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
     /* --- Contact Section --- */
     .contact-wrapper {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     /* --- Footer --- */
@@ -129,7 +135,7 @@
 /* ==========================================================
    MEDIUM TABLETS & MOBILE LANDSCAPE (<= 768px)
 ========================================================== */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
 
     .footer {
         text-align: center;
@@ -157,14 +163,14 @@
 /* ==========================================================
    MOBILE PHONES (<= 576px)
 ========================================================== */
-@media (max-width: 576px) {
+@media (max-width: 36rem) {
 
     html {
         font-size: 15px;
     }
 
     .section-header {
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     /* --- Hero Section Mobile --- */
@@ -172,9 +178,8 @@
         padding: 4rem 0;
     }
 
-    .hero-image img {
-        width: 100%;
-        max-width: 300px;
+    .hero-image {
+        max-width: 16rem;
     }
 
     .hero-buttons {
@@ -185,7 +190,7 @@
     .btn-primary,
     .btn-secondary {
         width: 100%;
-        text-align: center;
+        justify-content: center;
     }
 
     /* --- About Section Mobile --- */
@@ -197,18 +202,16 @@
 
     /* --- Grid Layout Mobile Stacks --- */
     .stats-grid,
-    .projects-grid,
-    .skills-content,
-    .contact {
+    .projects-grid {
         grid-template-columns: 1fr;
     }
 
     /* --- Contact & Footer Mobile --- */
     .contact-card {
-        padding: 1.75rem;
+        padding: 1.5rem;
     }
 
     .social-links-list a {
-        padding: 0.85rem 1rem;
+        padding: 0.75rem 0.9rem;
     }
 }

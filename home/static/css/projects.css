@@ -4,7 +4,7 @@
 
 .projects {
     padding: var(--section-spacing, 5rem) 0;
-    background: var(--bg-primary);
+    background: rgba(18, 19, 23, 0.68);
 }
 
 /* Category Filter Buttons */
@@ -19,34 +19,36 @@
 }
 
 .filter-btn {
-    padding: 0.6rem 1.4rem;
+    padding: 0.55rem 1.3rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
     color: var(--text-light);
-    border-radius: 999px;
-    font-size: 0.95rem;
-    font-weight: 500;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition), box-shadow 0.3s ease;
 }
 
 .filter-btn:hover {
-    color: var(--accent-cyan);
-    border-color: var(--accent-cyan);
+    color: var(--accent-copper);
+    border-color: var(--accent-copper);
+    box-shadow: var(--shadow-glow);
 }
 
 .filter-btn.active {
-    background: var(--accent-cyan);
-    color: var(--bg-primary);
-    border-color: var(--accent-cyan);
-    box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3);
+    background: var(--accent-copper);
+    color: #121317;
+    border-color: var(--accent-copper);
+    box-shadow: 0 0.25rem 0.875rem var(--accent-copper-glow);
 }
 
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    justify-content: center;
+    gap: 1.75rem;
 }
 
 /* Project Card */
@@ -54,11 +56,10 @@
     position: relative;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg, 1rem);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--shadow-sm);
     transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -76,34 +77,57 @@
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-cyan);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-0.5rem);
+    border-color: var(--accent-copper);
+    box-shadow: var(--shadow-glow);
 }
 
-.project-card:hover .project-visual i {
-    animation: project-icon-float 0.6s ease-in-out both;
-}
-
-.project-card.active .project-content > * {
-    animation: project-content-rise 0.45s ease both;
-}
-
-.project-card.active .project-content h3 { animation-delay: 0.08s; }
-.project-card.active .project-content p { animation-delay: 0.16s; }
-.project-card.active .project-tags { animation-delay: 0.24s; }
-.project-card.active .project-status { animation-delay: 0.32s; }
-
-@keyframes project-content-rise {
-    from { opacity: 0; transform: translateY(0.65rem); }
-    to { opacity: 1; transform: translateY(0); }
-}
-/* Project Visual */
+/* Project Visual — copper scan-line sweep, on brand with the circuit theme */
 .project-visual {
     position: relative;
     width: 100%;
     overflow: hidden;
     isolation: isolate;
+    background: var(--bg-secondary);
+}
+
+/* Signature move: thumbnail scan-reveals left-to-right, then flashes a terminal label.
+   Keyed off the parent .project-card's active state (not its own) for reliability. */
+.project-visual.scan-reveal-h {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.project-card.active .project-visual.scan-reveal-h {
+    clip-path: inset(0 0% 0 0);
+}
+
+.project-visual.scan-reveal-h::before {
+    content: "> project_loaded";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    color: var(--accent-copper);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    z-index: 4;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.project-card.active .project-visual.scan-reveal-h::before {
+    animation: terminal-flicker 0.9s steps(1) forwards;
+}
+
+@keyframes terminal-flicker {
+    0% { opacity: 1; }
+    15% { opacity: 0; }
+    25% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
 }
 
 .project-visual img {
@@ -111,63 +135,49 @@
     height: auto;
     display: block;
 }
-.project-visual::before {
-    content: "";
-    position: absolute;
-    inset: -90%;
-    z-index: -1;
-    background: repeating-linear-gradient(115deg, transparent 0 1.7rem, rgba(255, 255, 255, 0.12) 1.8rem 1.95rem, transparent 2.05rem 3.7rem);
-    animation: project-scan 2.2s linear infinite;
-}
 
 .project-visual::after {
     content: "";
     position: absolute;
     top: 0;
     left: -35%;
-    width: 28%;
+    width: 22%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-copper-glow), transparent);
     transform: skewX(-20deg);
-    animation: project-glint 2.8s ease-in-out infinite;
+    animation: project-glint 3.2s ease-in-out infinite;
 }
 
-.project-visual i {
-    filter: drop-shadow(0 8px 18px rgba(6, 182, 212, 0.3));
-    animation: project-icon-idle 1.8s ease-in-out infinite;
-}
-
-@keyframes project-scan { to { transform: translateX(11%); } }
 @keyframes project-glint {
     0%, 28% { left: -35%; }
     62%, 100% { left: 112%; }
 }
-@keyframes project-icon-idle { 50% { transform: translateY(-0.3rem) scale(1.04); } }
 
-@keyframes project-icon-float {
-    50% { transform: translateY(-0.45rem) scale(1.1) rotate(-5deg); }
+.project-visual i {
+    filter: drop-shadow(0 0.5rem 1rem var(--accent-copper-glow));
 }
 
 /* Project Body Content */
 .project-content {
-    padding: 1.75rem;
+    padding: 1.6rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
 .project-content h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--dark);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
 }
 
 .project-content p {
     color: var(--text-light);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
     flex-grow: 1;
 }
 
@@ -176,31 +186,46 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
 }
 
 .project-tags span {
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 0.3rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.28rem 0.7rem;
     background: var(--bg-primary);
     border: 1px solid var(--border);
-    color: var(--accent-cyan);
-    border-radius: 999px;
+    color: var(--accent-copper);
+    border-radius: var(--radius-sm);
 }
 
-/* Availability note */
+/* Availability note — LED dot signals live/active status */
 .project-status {
     border-top: 1px solid var(--border);
-    padding-top: 1.25rem;
+    padding-top: 1.2rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
     color: var(--text-light);
 }
 
-@media (max-width: 576px) {
+.project-status a {
+    color: var(--accent-copper);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.project-status a:hover {
+    color: var(--dark);
+    text-decoration: underline;
+}
+
+@media (max-width: 36rem) {
     .projects-grid {
         grid-template-columns: 1fr;
     }
