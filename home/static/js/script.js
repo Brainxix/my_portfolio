@@ -72,6 +72,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const header = document.querySelector(".header");
+
+    // --- Header height fix -------------------------------------------------
+    // Keeps the --header-height CSS variable in sync with the header's real
+    // rendered height, so the mobile nav drawer (which positions itself at
+    // top: var(--header-height)) never sits above/inside the hero content.
+    const setHeaderHeightVar = () => {
+        if (header) {
+            document.documentElement.style.setProperty(
+                "--header-height",
+                `${header.offsetHeight}px`
+            );
+        }
+    };
+    setHeaderHeightVar();
+    window.addEventListener("resize", setHeaderHeightVar);
+    // -------------------------------------------------------------------
+
     const progressBar = document.getElementById("progressBar");
     const backToTopBtn = document.getElementById("backToTop");
     const sections = document.querySelectorAll("section[id]");
@@ -148,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.65 });
     document.querySelectorAll(".counter").forEach((counter) => counterObserver.observe(counter));
 
-    
+
     const filterButtons = document.querySelectorAll(".filter-btn");
     const projectCards = document.querySelectorAll(".project-card");
     filterButtons.forEach((button) => {

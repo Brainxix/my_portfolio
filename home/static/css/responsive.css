@@ -7,55 +7,11 @@
 ========================================================== */
 @media (max-width: 62rem) {
 
-    /* --- Navbar & Mobile Menu --- */
-    .menu-btn {
-        display: flex;
-    }
-
-    .navbar {
-        position: relative;
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--bg-card);
-        backdrop-filter: blur(1rem);
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-        z-index: 100;
-    }
-
-    .nav-links.active {
-        max-height: 31.25rem;
-    }
-
-    .nav-links li {
-        width: 100%;
-    }
-
-    .nav-links a {
-        display: block;
-        width: 100%;
-        padding: 1.1rem;
-        text-align: center;
-        color: var(--text-light);
-        border-bottom: 1px solid var(--border);
-        transition: var(--transition);
-    }
-
-    .nav-links a:hover {
-        color: var(--accent-copper);
-        background: rgba(217, 135, 63, 0.06);
-    }
+    /* NOTE: Mobile menu (.menu-btn, .navbar, .nav-links) is fully owned
+       by navbar.css. Do not redefine it here — a duplicate/conflicting
+       definition previously caused the drawer to render with mixed
+       positioning (position + transform fighting) and let hero text
+       bleed through its translucent background. */
 
     .logo img {
         height: 1.9rem;
